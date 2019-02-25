@@ -1,0 +1,21 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: page-service
+  thymeleaf:
+    cache: false #更改thymeleaf模板后无需重启项目即可刷新
+  rabbitmq:
+    host: 127.0.0.1 #TODO change IP
+    username: guest
+    password: guest
+    virtual-host: /
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+item:
+  html:
+    path: /usr/local/var/www/leyou/item

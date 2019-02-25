@@ -1,0 +1,20 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: sms-service
+  rabbitmq:
+    host: 127.0.0.1 #TODO change IP
+    username: guest
+    password: guest
+    virtual-host: /
+  redis:
+    host: 127.0.0.1 #TODO change IP
+    port: 6379
+    password: donghualifeng
+ly:
+  sms:
+    accessKeyId: LTAIaKhsgnVhuNA7 # 你自己的accessKeyId
+    accessKeySecret: FeQrAMHWwjEZCmv0zR7ViSNIFTJFbV # 你自己的AccessKeySecret
+    signName: 乐优商城 # 签名名称
+    verifyCodeTemplate: SMS_133976814 # 模板名称

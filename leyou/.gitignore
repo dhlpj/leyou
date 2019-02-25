@@ -1,0 +1,17 @@
+#bin/:           表示忽略当前路径下的bin文件夹，该文件夹下的所有内容都会被忽略，但不忽略 bin 文件
+#/bin:           表示忽略根目录下的bin文件，包括bin
+ly-auth/ly-auth-common/target
+ly-auth/ly-auth-service/target
+ly-cart/target
+ly-common/target
+ly-gateway/target
+ly-item/ly-item-interface/target
+ly-item/ly-item-service/target
+ly-order/target
+ly-page/target
+ly-registry/target
+ly-search/target
+ly-sms/target
+ly-upload/target
+ly-user/ly-user-interface/target
+ly-user/ly-user-service/target

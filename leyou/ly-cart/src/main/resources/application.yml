@@ -1,0 +1,25 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: cart-service
+  redis:
+    host: 127.0.0.1 #TODO change IP
+    port: 6379
+    password: donghualifeng
+  rabbitmq:
+    host: 127.0.0.1 #TODO change IP
+    username: guest
+    password: guest
+    virtual-host: /
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+ly:
+  jwt:
+    pubKeyPath: /Users/jie.peng/Documents/rsa.pub # 公钥地址
+    cookieName: LY_TOKEN # cookie的名称

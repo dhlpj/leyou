@@ -1,0 +1,51 @@
+server: #zuul整合了hystrix和ribbion
+  port: 10010
+spring:
+  application:
+    name: api-gateway #在eureka server上显示的应用名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    #registry-fetch-interval-seconds: 30s 指定eureka client间隔多久去拉取服务注册信息
+  instance:
+    prefer-ip-address: true #向Eureka注册的是自己的ip，而不是hostname
+zuul:
+  prefix: /api # 添加路由前缀
+  routes:
+    item-service: /item/** #指定了路由规则之后默认的就失效了
+    search-service: /search/** #搜索服务
+    user-service: /user/** #用户中心
+    auth-service: /auth/** #授权中心
+    cart-service: /cart/** #购物车服务
+    order-service: /order/** #购物车服务
+    upload-service:
+      path: /upload/**
+      serviceId:  upload-service
+      strip-prefix: false #该条路由配置忽略掉/upload,例如请求的路径:/api/upload/image,映射的服务本应该是upload-service下的/image，但是加上该配置后是:/upload/image
+  add-host-header: true #携带header中的host信息
+  sensitive-headers:  #将敏感头信息设置为null，否则set-cookie将会无效
+ribbon:
+  ConnectTimeout: 1000 # 连接超时时间(ms)
+  ReadTimeout: 3500 # 通信超时时间(ms)
+  MaxAutoRetries: 0 # 同一服务同一实例的重试次数
+  MaxAutoRetriesNextServer: 0 # 同一服务不同实例的重试次数
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 5000 # 熔断超时时长：5000ms
+ly:
+  jwt:
+    pubKeyPath: /Users/jie.peng/Documents/rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register #用户注册
+      - /api/user/check #用户名及手机号校验
+      - /api/user/code #发送短信验证码
+      - /api/item

@@ -1,0 +1,31 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/leyou?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 199712Pj.
+    driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: 127.0.0.1 #TODO change IP
+    username: guest
+    password: guest
+    virtual-host: /
+    template:
+      exchange: leyou.sms.exchange
+  redis:
+    host: 127.0.0.1 #TODO change IP
+    port: 6379
+    password: donghualifeng
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1 #设置该服务的IP
+
+mybatis:
+  type-aliases-package: com.leyou.user.pojo

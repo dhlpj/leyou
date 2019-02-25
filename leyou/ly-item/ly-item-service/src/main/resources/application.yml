@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: item-service #在eureka server上显示的应用名称
+  datasource:
+    url: jdbc:mysql://localhost:3306/leyou?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 199712Pj.
+  rabbitmq:
+    host: 127.0.0.1 #TODO change IP
+    username: guest
+    password: guest
+    virtual-host: /
+    template:
+      retry: #消息发送到rabbitmq 中失败后重试
+        enabled: true
+        initial-interval: 10000ms #发送消息失败后的初始重试时间间隔
+        max-interval: 30000ms #发送消息失败后的最大时间间隔，超过这个间隔将不再重试
+        multiplier: 2 #第一次发送消息失败后重试时间间隔扩大的倍数
+      exchange: leyou.item.exchange #交换机的名称
+    publisher-confirms: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true #向Eureka注册的是自己的ip，而不是hostname
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #以sysout的方式打印sql信息
