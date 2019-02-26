@@ -1,5 +1,5 @@
 # leyou
-an online-shop system,including portal,manage-web,backend and also some configurations.
+an online-shop system,including portal,manage-web,backend and also some configurations and demo.
 
 ## Description
 The project is divided into portal,manage-web,backend.
